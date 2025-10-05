@@ -1,0 +1,43 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Build directories
+/bin/
+/build/
+/target/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Maven
+.mvn/
+
+# Gradle
+.gradle/
+
+# Misc
+*.swp
+*.swo
+
+# JDBC/SQL
+*.db
+
+# Ignore MySQL Connector JAR
+mysql-connector-java*.jar
+
