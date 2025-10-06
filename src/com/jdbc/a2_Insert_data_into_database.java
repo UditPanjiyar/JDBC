@@ -1,16 +1,14 @@
 package com.jdbc;
 
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
-public class a1_Main {
-    public static void main(String[] args) throws ClassNotFoundException {
+public class a2_Insert_data_into_database {
+    public static void main(String[] args) {
+
         String url = "jdbc:mysql://localhost:3306/student";
         String user = "root";
         String password = "Mysql@12";
-        String query = "select * from employees;";
+        String query = "insert into employees (id, name, job_title, salary) values (3, 'John Doe', 'Software Engineer', 75000.00);";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,21 +20,19 @@ public class a1_Main {
         try{
             Connection con =  DriverManager.getConnection(url, user, password);
             System.out.println("Connection established successfully");
-
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while(rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String job_title = rs.getString("job_title");
-                Double salary = rs.getDouble("salary");
-                System.out.println(id + " | " + name + " | " + job_title + " | " + salary);
-
+            int rowAffected = stmt.executeUpdate(query);
+            if(rowAffected > 0){
+                System.out.println("insert successfully "+ rowAffected +" rows affected");
             }
-            rs.close();
+            else {
+                System.out.println("insertion failed");
+            }
+
             stmt.close();
             con.close();
             System.out.println("Connection closed successfully");
+
         }
         catch (SQLException e)
         {
